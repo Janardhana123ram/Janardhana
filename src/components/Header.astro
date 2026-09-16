@@ -1,17 +1,17 @@
 ```astro
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, getPath } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href={getPath('/')}>{SITE_TITLE}</a></h2>
 
 		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href={getPath('/')}>Home</HeaderLink>
+			<HeaderLink href={getPath('/blog')}>Blog</HeaderLink>
+			<HeaderLink href={getPath('/about')}>About</HeaderLink>
 		</div>
 
 		<div class="social-links">
