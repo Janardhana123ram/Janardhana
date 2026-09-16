@@ -1,0 +1,132 @@
+---
+interface ExperienceEntry {
+	company: string;
+	role: string;
+	duration: string;
+	location: string;
+	employmentType?: string;
+	skills?: string;
+}
+
+const experiences: ExperienceEntry[] = [
+	{
+		company: 'Bosch',
+		role: 'Lead Engineer',
+		duration: 'Jul 2025 - Present · 1 yr 3 mos',
+		location: 'Bengaluru, Karnataka, India',
+		employmentType: 'Full-time',
+		skills: 'Bazel, Python, and more',
+	},
+	{
+		company: 'Bosch',
+		role: 'Senior Engineer',
+		duration: 'May 2023 - Jul 2025 · 2 yrs 3 mos',
+		location: 'Bengaluru, Karnataka, India',
+		skills: 'Codespaces, DocsAsCode',
+	},
+	{
+		company: 'deepcompute',
+		role: 'Software Engineer',
+		duration: 'Jan 2020 - Apr 2023 · 3 yrs 4 mos',
+		location: 'Greater Bengaluru Area',
+		employmentType: 'Full-time',
+		skills: 'Amazon Web Services (AWS)',
+	},
+	{
+		company: 'Pixzee Technology',
+		role: 'Software Developer',
+		duration: 'Jun 2017 - Dec 2019 · 2 yrs 7 mos',
+		location: 'Bengaluru, Karnataka, India',
+		employmentType: 'Full-time',
+	},
+];
+---
+
+<div class="experience-list">
+	{
+		experiences.map((experience) => (
+			<div class="experience-item">
+				<div class="experience-header">
+					<div>
+						<h3>{experience.company}</h3>
+						<p class="role">{experience.role}</p>
+						<p class="duration">{experience.duration}</p>
+						<p class="location">{experience.location}</p>
+					</div>
+					{experience.employmentType && (
+						<p class="employment-type">{experience.employmentType}</p>
+					)}
+				</div>
+				{experience.skills && <p class="skills">{experience.skills}</p>}
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.experience-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.experience-item {
+		border-left: 3px solid rgb(var(--accent));
+		padding-left: 1.5rem;
+	}
+
+	.experience-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 0.5rem;
+	}
+
+	.experience-header h3 {
+		margin: 0;
+		font-size: 1.25rem;
+		color: rgb(var(--black));
+	}
+
+	.experience-header .role {
+		margin: 0.25rem 0 0 0;
+		font-weight: 500;
+		color: rgb(var(--black));
+	}
+
+	.experience-header .duration {
+		margin: 0.25rem 0 0 0;
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+
+	.experience-header .location {
+		margin: 0.25rem 0 0 0;
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+
+	.employment-type {
+		margin: 0;
+		font-size: 0.85rem;
+		color: rgb(var(--accent));
+		font-weight: 500;
+	}
+
+	.experience-item .skills {
+		margin: 0.75rem 0 0 0;
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+
+	@media (max-width: 720px) {
+		.experience-header {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.employment-type {
+			font-size: 0.8rem;
+		}
+	}
+</style>
