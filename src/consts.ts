@@ -4,3 +4,10 @@
 export const SITE_TITLE = 'Janardhana R';
 export const SITE_DESCRIPTION =
 	'Janardhana R — Lead Engineer focused on Developer Experience, Platform Engineering, Build Systems, and developer tooling.';
+
+export const BASE_PATH = '/Janardhana';
+
+export function getPath(path: string): string {
+	if (path === '/') return BASE_PATH + '/';
+	return BASE_PATH + path;
+}

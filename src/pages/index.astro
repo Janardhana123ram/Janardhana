@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, getPath } from '../consts';
 import profileImage from '../assets/images/524035.jpg';
 ---
 
@@ -37,9 +37,9 @@ import profileImage from '../assets/images/524035.jpg';
 						</p>
 
 						<p>
-							<a href="/about/">About me</a>
+							<a href={getPath("/about/")}>About me</a>
 							&nbsp;·&nbsp;
-							<a href="/blog/">Writing</a>
+							<a href={getPath("/blog/")}>Writing</a>
 							&nbsp;·&nbsp;
 							<a
 								href="https://github.com/Janardhana123ram"
@@ -102,7 +102,7 @@ import profileImage from '../assets/images/524035.jpg';
 				</p>
 
 				<p>
-					<a href="/blog/">Read my writing →</a>
+					<a href={getPath("/blog/")}>Read my writing →</a>
 				</p>
 			</section>
 		</main>
