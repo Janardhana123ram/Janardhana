@@ -1,0 +1,76 @@
+```astro
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'About Me';
+const description =
+	'About Janardhana R — Lead Engineer focused on Developer Experience, Platform Engineering, Build Systems, and developer tooling.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<h1>About Me</h1>
+
+			<p>
+				I’m a Lead Engineer with 9+ years of software engineering
+				experience across startups and large organizations. I enjoy
+				working on engineering problems where developer productivity,
+				automation, and reliable software delivery come together.
+			</p>
+
+			<p>
+				My work focuses on <strong>Developer Experience, Platform
+				Engineering, Build Systems, CI/CD, and developer tooling</strong>.
+				At Bosch, I work on tools and infrastructure that help engineering
+				teams build, document, validate, and deliver software more efficiently.
+			</p>
+
+			<p>
+				I have experience building solutions from the ground up, working
+				across different teams and environments, and supporting engineering
+				workflows used by large, distributed teams. My background across
+				startup and enterprise environments has given me experience working
+				with both small teams and large organizations.
+			</p>
+
+			<h2>Technical Interests</h2>
+
+			<p>
+				I’m particularly interested in <strong>Platform Engineering,
+				Developer Experience, Build Systems, Cloud Infrastructure,
+				Open Source, and AI-assisted developer tools</strong>.
+			</p>
+
+			<p>
+				I enjoy understanding how development workflows work end to end —
+				from source code and builds to CI/CD, documentation, infrastructure,
+				and software delivery.
+			</p>
+
+			<h2>Outside of Work</h2>
+
+			<p>
+				Outside of work, I enjoy building small systems and experimenting
+				with software, hardware, automation, and infrastructure.
+			</p>
+
+			<p>
+				This site is where I document some of those projects, experiments,
+				and things I learn along the way.
+			</p>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+```

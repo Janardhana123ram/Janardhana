@@ -1,0 +1,149 @@
+```astro
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import profileImage from '../assets/images/524035.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section>
+				<div class="hero">
+					<div class="hero-content">
+						<p>Lead Engineer</p>
+
+						<h1>Building better developer experiences.</h1>
+
+						<p>
+							I work on Developer Experience, Platform Engineering,
+							Build Systems, CI/CD, and developer tooling.
+						</p>
+
+						<p>
+							I enjoy solving engineering problems where developer
+							productivity, automation, and reliable software delivery
+							come together.
+						</p>
+
+						<p>
+							<a href="/about/">About me</a>
+							&nbsp;·&nbsp;
+							<a href="/blog/">Writing</a>
+							&nbsp;·&nbsp;
+							<a
+								href="https://github.com/Janardhana123ram"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								GitHub
+							</a>
+							&nbsp;·&nbsp;
+							<a
+								href="https://www.linkedin.com/in/janardhana-r-9480b292/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								LinkedIn
+							</a>
+						</p>
+					</div>
+
+					<div class="hero-image">
+						<Image
+							src={profileImage}
+							alt="Janardhana R"
+							width={240}
+							height={240}
+							format="webp"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<hr />
+
+			<section>
+				<h2>What I work on</h2>
+
+				<ul>
+					<li>Developer Experience and developer tooling</li>
+					<li>Build systems and automation</li>
+					<li>CI/CD and software delivery workflows</li>
+					<li>Documentation-as-code and engineering infrastructure</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>What I'm interested in</h2>
+
+				<p>
+					Platform Engineering, Developer Experience, Build Systems,
+					Cloud Infrastructure, Open Source, and AI-assisted developer tools.
+				</p>
+			</section>
+
+			<section>
+				<h2>Writing</h2>
+
+				<p>
+					I use this site to document things I build, experiments I work on,
+					and lessons I learn from engineering.
+				</p>
+
+				<p>
+					<a href="/blog/">Read my writing →</a>
+				</p>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 3rem;
+	}
+
+	.hero-content {
+		flex: 1;
+	}
+
+	.hero-image {
+		flex-shrink: 0;
+	}
+
+	.hero-image img {
+		width: 240px;
+		height: 240px;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	@media (max-width: 720px) {
+		.hero {
+			flex-direction: column-reverse;
+			align-items: flex-start;
+		}
+
+		.hero-image img {
+			width: 180px;
+			height: 180px;
+		}
+	}
+</style>
+```
