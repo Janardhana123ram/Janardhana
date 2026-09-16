@@ -1,0 +1,167 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE, getPath } from '../../consts';
+import { projectsData } from '../../projectsData';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Projects | {SITE_TITLE}" description={SITE_DESCRIPTION} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section>
+				<h1>Projects</h1>
+
+				<p>
+					Detailed breakdown of the projects I've worked on, highlighting key
+					contributions, technologies used, and impact.
+				</p>
+
+				<div class="projects-grid">
+					{
+						projectsData.map((project) => (
+							<a href={getPath(`/projects/${project.id}/`)} class="project-card">
+								<div class="project-header">
+									<h3>{project.title}</h3>
+									<p class="company">{project.company}</p>
+									<p class="duration">{project.duration}</p>
+								</div>
+
+								<p class="description">{project.description}</p>
+
+								<div class="skills">
+									{project.skills.slice(0, 3).map((skill) => (
+										<span class="skill-tag">{skill}</span>
+									))}
+									{project.skills.length > 3 && (
+										<span class="skill-tag">+{project.skills.length - 3}</span>
+									)}
+								</div>
+
+								<div class="read-more">Read more →</div>
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		width: 960px;
+	}
+
+	h1 {
+		font-size: 2.369rem;
+		margin-bottom: 1rem;
+	}
+
+	section > p {
+		line-height: 1.6;
+		color: rgb(var(--gray));
+		margin-bottom: 2rem;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5rem;
+		border: 1px solid rgb(var(--accent), 20%);
+		border-radius: 8px;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.3s ease;
+	}
+
+	.project-card:hover {
+		border-color: rgb(var(--accent));
+		box-shadow: 0 4px 12px rgba(var(--accent), 15%);
+		transform: translateY(-2px);
+	}
+
+	.project-header {
+		margin-bottom: 1rem;
+	}
+
+	.project-header h3 {
+		margin: 0 0 0.25rem 0;
+		font-size: 1.25rem;
+		color: rgb(var(--black));
+	}
+
+	.project-header .company {
+		margin: 0;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: rgb(var(--accent));
+	}
+
+	.project-header .duration {
+		margin: 0.25rem 0 0 0;
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+	}
+
+	.description {
+		margin: 0 0 1rem 0;
+		line-height: 1.5;
+		color: rgb(var(--gray));
+		flex-grow: 1;
+	}
+
+	.skills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.skill-tag {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		background-color: rgb(var(--accent), 10%);
+		color: rgb(var(--accent));
+		border-radius: 4px;
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+
+	.read-more {
+		color: rgb(var(--accent));
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 720px) {
+		main {
+			width: 100%;
+			padding: 0 1rem;
+		}
+
+		h1 {
+			font-size: 1.563rem;
+		}
+
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

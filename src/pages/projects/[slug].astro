@@ -1,0 +1,210 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE, getPath } from '../../consts';
+import { projectsData } from '../../projectsData';
+
+export function getStaticPaths() {
+	return projectsData.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+interface Props {
+	project: (typeof projectsData)[0];
+}
+
+const { project } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="{project.title} | {SITE_TITLE}" description={project.description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<article>
+				<div class="project-header">
+					<a href={getPath('/projects/')} class="back-link">← Back to Projects</a>
+					<h1>{project.title}</h1>
+					<div class="meta">
+						<span class="company">{project.company}</span>
+						<span class="separator">·</span>
+						<span class="duration">{project.duration}</span>
+					</div>
+				</div>
+
+				<section class="description">
+					<p>{project.description}</p>
+				</section>
+
+				{
+					project.keyContributions.length > 0 && (
+						<section class="contributions">
+							<h2>Key Contributions</h2>
+							<ul>
+								{project.keyContributions.map((contribution) => (
+									<li>{contribution}</li>
+								))}
+							</ul>
+						</section>
+					)
+				}
+
+				{
+					project.skills.length > 0 && (
+						<section class="skills">
+							<h2>Technologies & Skills</h2>
+							<div class="skills-list">
+								{project.skills.map((skill) => (
+									<span class="skill-tag">{skill}</span>
+								))}
+							</div>
+						</section>
+					)
+				}
+			</article>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		width: 960px;
+	}
+
+	article {
+		max-width: 800px;
+	}
+
+	.project-header {
+		margin-bottom: 3rem;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 1rem;
+		color: rgb(var(--accent));
+		text-decoration: none;
+		font-weight: 500;
+		transition: opacity 0.2s ease;
+	}
+
+	.back-link:hover {
+		opacity: 0.7;
+	}
+
+	h1 {
+		margin: 0 0 0.5rem 0;
+		font-size: 2.369rem;
+		color: rgb(var(--black));
+	}
+
+	.meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1rem;
+		color: rgb(var(--gray));
+	}
+
+	.meta .company {
+		font-weight: 600;
+		color: rgb(var(--accent));
+	}
+
+	.meta .separator {
+		color: rgb(var(--gray), 30%);
+	}
+
+	.meta .duration {
+		font-size: 0.95rem;
+	}
+
+	.description {
+		margin: 2rem 0;
+		line-height: 1.8;
+		font-size: 1.05rem;
+	}
+
+	.description p {
+		margin: 1rem 0;
+		color: rgb(var(--gray));
+	}
+
+	.contributions,
+	.skills {
+		margin: 2.5rem 0;
+	}
+
+	h2 {
+		margin: 0 0 1.5rem 0;
+		font-size: 1.5rem;
+		color: rgb(var(--black));
+	}
+
+	.contributions ul {
+		margin: 0;
+		padding-left: 1.5rem;
+		list-style-type: none;
+	}
+
+	.contributions li {
+		margin: 0.75rem 0;
+		padding-left: 1.5rem;
+		line-height: 1.7;
+		color: rgb(var(--gray));
+		position: relative;
+	}
+
+	.contributions li:before {
+		content: '▪';
+		position: absolute;
+		left: 0;
+		color: rgb(var(--accent));
+		font-weight: bold;
+	}
+
+	.skills-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.skill-tag {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background-color: rgb(var(--accent), 10%);
+		color: rgb(var(--accent));
+		border-radius: 6px;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+	@media (max-width: 720px) {
+		main {
+			width: 100%;
+			padding: 0 1rem;
+		}
+
+		h1 {
+			font-size: 1.563rem;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+		}
+
+		.meta {
+			flex-wrap: wrap;
+		}
+	}
+</style>
